@@ -1,82 +1,225 @@
 
+/* Global Styles */
 * {
-    box-sizing: border-box;
-  }
-  
+  box-sizing: border-box;
+}
+
+body {
+  font-family: helvetica, arial, sans-serif;
+  margin: 25px;
+  background-color: #fff8f0;
+  color: #5c4033;
+}
+
+/* Main Layout */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  min-height: 400px;
+  gap: 30px;
+  padding: 30px 0;
+}
+
+/* Header */
+header {
+  text-align: center;
+  border-bottom: 2px solid #e8b89d;
+  padding-bottom: 20px;
+}
+
+h1 {
+  font-weight: bold;
+  color: #a65f46;
+  font-size: 36px;
+}
+
+h2 {
+  color: #a65f46;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+p {
+  max-width: 600px;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+/* Footer */
+footer {
+  padding-top: 25px;
+  border-top: 2px solid #e8b89d;
+  text-align: center;
+  color: #8b6856;
+}
+
+footer a {
+  float: left;
+  margin: 5px;
+}
+
+/* Pet Image */
+.pet-image {
+  height: 250px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.pet-image-container {
+  padding: 20px;
+  text-align: center;
+  background-color: #ffe5d0;
+  border-radius: 20px;
+  border: 2px solid #e8b89d;
+}
+
+/* Pet Dashboard */
+.dashboard {
+  padding: 25px;
+  background-color: #ffffff;
+  border: 2px solid #f0d2bd;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 4px 12px rgba(92, 64, 51, 0.1);
+}
+
+.dashboard div {
+  display: block;
+}
+
+.dashboard div {
+  margin-bottom: 10px;
+}
+
+.dashboard strong {
+  color: #a65f46;
+}
+
+/* Pet Message */
+.pet-message-container {
+  background-color: #fff0df;
+  border: 1px solid #e8b89d;
+  border-radius: 12px;
+  padding: 12px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+#pet-message {
+  color: #8b4f3b;
+  font-size: 15px;
+  font-style: italic;
+  margin: 5px;
+}
+
+/* Action Buttons */
+.button-container {
+  margin-top: 20px;
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.button-container button {
+  width: 130px;
+  min-height: 45px;
+  text-align: center;
+  display: inline-block;
+  font-size: 15px;
+  background-color: #d88c6a;
+  border: 1px solid #c87856;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 10px;
+}
+
+.button-container button:hover {
+  background-color: #b96b4d;
+}
+
+.button-container button:active {
+  background-color: #99513a;
+}
+
+/* Individual Button Colors */
+.treat-button {
+  background-color: #d88c6a;
+}
+
+.play-button {
+  background-color: #d99b7b;
+}
+
+.exercise-button {
+  background-color: #b9826b;
+}
+
+.nap-button {
+  background-color: #a87973;
+}
+
+/* Care Guide Button */
+.guide-button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  background-color: #f0d2bd;
+  color: #5c4033;
+  border: 1px solid #d9a88d;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.guide-button:hover {
+  background-color: #e8b89d;
+}
+
+/* Care Guide */
+#care-guide {
+  background-color: #fff0df;
+  border: 1px solid #e8b89d;
+  border-radius: 12px;
+  padding: 15px;
+  margin-top: 15px;
+}
+
+#care-guide h3 {
+  color: #a65f46;
+}
+
+#care-guide p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Smaller Screens */
+@media screen and (max-width: 600px) {
   body {
-    font-family: helvetica, arial, sans-serif;
-    margin: 25px;
+    margin: 15px;
   }
-  
+
   main {
-    display:block;
-    height:175px;
+    flex-direction: column;
+    gap: 20px;
   }
-  
-  header {
-    border-bottom: 1px solid black;
-  }
-  
+
   h1 {
-    font-weight: bold;
-    color: #000;
+    font-size: 28px;
   }
-  
-  .bold {
-    font-weight: bold;
-  }
-  
-  p {
-    max-width: 600px;
-  }
-  
-  
-  li {
-    margin-bottom: 5px;
-  }
-  
-  footer {
-    padding-top: 25px;
-    border-top: 1px solid black;
-  }
-  
-  footer a {
-    float:left;
-    margin:5px;
-  }
-  
-  .pet-image {
-    height:250px;
-  }
-  
-  .dashboard div {
-    display:block;
-  }
-  
-  .pet-image-container {
-    float:left;
-    padding:10px;
-  }
-  
+
   .dashboard {
-    float:left;
-    padding:20px;
+    padding: 20px;
   }
-  
-  .button-container {
-    margin-top:20px;
-  }
-  
+
   .button-container button {
-    width: 100px;
-      margin-right: 10px;
-      text-align: center;
-      display: inline-block;
-      float: left;
-    font-size:15px;
-    background-color: #1e2835;
-    border-color: #404853;
-    cursor:pointer;
-    background-image: linear-gradient(to bottom,rgba(246,246,246,.1)0%,rgba(30,40,53,0)66%);
-    color: #fafafa;
+    flex: 1 1 120px;
   }
+}
