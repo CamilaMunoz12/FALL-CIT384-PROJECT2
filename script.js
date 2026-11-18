@@ -9,7 +9,7 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
   $('.exercise-button').click(clickedExerciseButton);
   $('.nap-button').click(clickedNapButton);
 
-  // Makes Mochi shake whenever an action button is clicked
+  // Makes Mochi shake and bounce whenever an action button is clicked
   $('.button-container button').click(shakePetImage);
 
   // jQuery Method 1: .toggle()
@@ -18,6 +18,9 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
   // Here, it allows the user to show or hide Mochi's care guide.
   $('.guide-button').click(function() {
     $('#care-guide').toggle();
+
+    // Display a comment from Mochi when the guide is clicked
+    showPetMessage("Taking care of me is easy! Just follow my guide!");
   });
 
 });
@@ -132,6 +135,7 @@ function updatePetInfoInHtml() {
 
 // Selects a random message from an array
 function getRandomMessage(messages) {
+
   // Generate a random number based on the array length
   var randomIndex = Math.floor(Math.random() * messages.length);
 
@@ -158,12 +162,16 @@ function shakePetImage() {
   // Select Mochi's image from the HTML
   var petImage = document.querySelector('.pet-image');
 
-  // Remove the shake class so the animation can restart
-  petImage.classList.remove('shake');
+  // Make sure the image exists before starting the animation
+  if (petImage) {
 
-  // Reset the animation so it works on every click
-  void petImage.offsetWidth;
+    // Remove the shake class so the animation can restart
+    petImage.classList.remove('shake');
 
-  // Add the shake class to start the animation
-  petImage.classList.add('shake');
+    // Reset the animation so it works on every click
+    void petImage.offsetWidth;
+
+    // Add the shake class to start the animation
+    petImage.classList.add('shake');
+  }
 }
