@@ -1,14 +1,22 @@
-
 /* Global Styles */
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: helvetica, arial, sans-serif;
-  margin: 25px;
-  background-color: #fff8f0;
-  color: #5c4033;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 25px;
+  min-height: 100vh;
+  color: #51476b;
+
+  /* Soft colorful background with little dots */
+  background-color: #f7f4ff;
+  background-image:
+    radial-gradient(#cfc5ef 2px, transparent 2px),
+    radial-gradient(#bce7eb 3px, transparent 3px);
+  background-size: 32px 32px, 65px 65px;
+  background-position: 0 0, 15px 20px;
 }
 
 /* Main Layout */
@@ -17,26 +25,50 @@ main {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  min-height: 400px;
-  gap: 30px;
-  padding: 30px 0;
+  gap: 35px;
+  max-width: 1050px;
+  margin: 30px auto;
+  padding: 35px;
+
+  background-color: #fffefa;
+  border: 3px solid #bdb0e9;
+  border-radius: 40px 70px 40px 70px;
+  box-shadow: 0 12px 0 #e4dcfa;
 }
 
 /* Header */
 header {
   text-align: center;
-  border-bottom: 2px solid #e8b89d;
-  padding-bottom: 20px;
+  padding: 30px;
+
+  background: linear-gradient(135deg, #e0d8fb, #d4f2ef);
+  border: 3px solid #b4a5e6;
+  border-radius: 55px 25px 55px 25px;
 }
 
 h1 {
-  font-weight: bold;
-  color: #a65f46;
+  font-family: "Courier New", monospace;
   font-size: 36px;
+  font-weight: bold;
+  color: #62539b;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px #ffffff;
 }
 
 h2 {
-  color: #a65f46;
+  font-family: "Courier New", monospace;
+  color: #62539b;
+  text-align: center;
+}
+
+h3 {
+  color: #62539b;
+}
+
+header p {
+  font-size: 17px;
+  color: #625982;
+  margin: 10px auto;
 }
 
 .bold {
@@ -51,17 +83,21 @@ li {
   margin-bottom: 5px;
 }
 
-/* Footer */
-footer {
-  padding-top: 25px;
-  border-top: 2px solid #e8b89d;
+/* Pet Image Container */
+.pet-image-container {
+  position: relative;
+  padding: 35px;
   text-align: center;
-  color: #8b6856;
-}
 
-footer a {
-  float: left;
-  margin: 5px;
+  /* Pastel background behind Mochi */
+  background: linear-gradient(145deg, #ddf6f4, #e6dfff);
+
+  /* Fun cloud-like shape */
+  border: 4px solid #aa9bdf;
+  border-radius: 35% 65% 40% 60% / 45% 35% 65% 55%;
+
+  box-shadow: 0 9px 0 #ded6f5;
+  transition: box-shadow 0.3s ease;
 }
 
 /* Pet Image */
@@ -69,157 +105,347 @@ footer a {
   height: 250px;
   max-width: 100%;
   object-fit: contain;
+  image-rendering: pixelated;
+
+  /* Blends the white image background with the pastel colors */
+  mix-blend-mode: multiply;
+
+  /* Smooth hover effects */
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-.pet-image-container {
-  padding: 20px;
-  text-align: center;
-  background-color: #ffe5d0;
-  border-radius: 20px;
-  border: 2px solid #e8b89d;
+/* Mochi grows slightly when hovered over */
+.pet-image-container:hover .pet-image {
+  transform: scale(1.06);
+  filter: drop-shadow(0 6px 8px rgba(120, 105, 190, 0.25));
+}
+
+/* Glowing pet container */
+.pet-image-container:hover {
+  box-shadow: 0 0 30px rgba(140, 191, 220, 0.6);
+}
+
+/* Floating Sparkle */
+.pet-image-container::before {
+  content: "\2726";
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  font-size: 35px;
+  color: #c5a34e;
+  animation: floatDecoration 2.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Floating Bubble */
+.pet-image-container::after {
+  content: "";
+  position: absolute;
+  right: 17px;
+  bottom: 24px;
+  width: 30px;
+  height: 30px;
+
+  border: 3px solid #77b9d4;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+
+  box-shadow:
+    -35px -20px 0 -9px #a7e2d4,
+    8px -55px 0 -10px #d3c6f4;
+
+  animation: floatDecoration 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Floating Decorations Animation */
+@keyframes floatDecoration {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }
 
 /* Pet Dashboard */
 .dashboard {
-  padding: 25px;
-  background-color: #ffffff;
-  border: 2px solid #f0d2bd;
-  border-radius: 20px;
   width: 100%;
   max-width: 450px;
-  box-shadow: 0 4px 12px rgba(92, 64, 51, 0.1);
+  padding: 25px;
+
+  background: linear-gradient(160deg, #f4efff, #eafaf6);
+  border: 3px solid #b8aae7;
+  border-radius: 30px;
+  box-shadow: 0 7px 0 #ded6f5;
 }
 
-.dashboard div {
+/* Pet Information Cards */
+.dashboard > div:not(.button-container):not(.pet-message-container):not(#care-guide) {
   display: block;
-}
+  background-color: #ffffff;
+  padding: 14px;
+  margin-bottom: 12px;
 
-.dashboard div {
-  margin-bottom: 10px;
+  border: 2px solid #d6ccf1;
+  border-radius: 18px 25px 18px 25px;
+  font-size: 16px;
 }
 
 .dashboard strong {
-  color: #a65f46;
+  color: #62539b;
 }
 
-/* Pet Message */
+/* Pet Message Container */
 .pet-message-container {
-  background-color: #fff0df;
-  border: 1px solid #e8b89d;
-  border-radius: 12px;
-  padding: 12px;
+  position: relative;
+  background-color: #fffdf4;
+  border: 3px dashed #9eafe0;
+  border-radius: 25px;
+  padding: 20px;
   margin-top: 20px;
+  margin-bottom: 20px;
   text-align: center;
+  box-shadow: 0 4px 0 #e0dafa;
 }
 
+/* Speech Bubble Point */
+.pet-message-container::before {
+  content: "";
+  position: absolute;
+  top: -14px;
+  left: 35px;
+  width: 20px;
+  height: 20px;
+
+  background-color: #fffdf4;
+  border-top: 3px dashed #9eafe0;
+  border-left: 3px dashed #9eafe0;
+
+  transform: rotate(45deg);
+}
+
+/* Mochi's Messages */
 #pet-message {
-  color: #8b4f3b;
-  font-size: 15px;
+  color: #62539b;
+  font-size: 16px;
   font-style: italic;
+  font-weight: bold;
+  line-height: 1.6;
   margin: 5px;
 }
 
-/* Action Buttons */
+/* Action Buttons Container */
 .button-container {
   margin-top: 20px;
-  display: flex !important;
+  display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
 }
 
+/* Action Buttons */
 .button-container button {
-  width: 130px;
-  min-height: 45px;
+  flex: 1 1 130px;
+  min-height: 52px;
+  padding: 12px;
   text-align: center;
-  display: inline-block;
+
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
-  background-color: #d88c6a;
-  border: 1px solid #c87856;
-  border-radius: 10px;
-  cursor: pointer;
+  font-weight: bold;
   color: #ffffff;
-  padding: 10px;
+
+  border: 2px solid #ffffff;
+  border-radius: 30px;
+  cursor: pointer;
+
+  box-shadow: 0 5px 0 rgba(78, 70, 120, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.button-container button:hover {
-  background-color: #b96b4d;
-}
-
-.button-container button:active {
-  background-color: #99513a;
-}
-
-/* Individual Button Colors */
+/* Give Treat Button */
 .treat-button {
-  background-color: #d88c6a;
+  background-color: #9984d2;
 }
 
+/* Play Button */
 .play-button {
-  background-color: #d99b7b;
+  background-color: #519eae;
 }
 
+/* Exercise Button */
 .exercise-button {
-  background-color: #b9826b;
+  background-color: #528e77;
 }
 
+/* Take a Nap Button */
 .nap-button {
-  background-color: #a87973;
+  background-color: #b28b4e;
+}
+
+/* Buttons Lift Up When Hovered */
+.button-container button:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 8px 0 rgba(78, 70, 120, 0.2);
+  filter: brightness(1.08);
+}
+
+/* Buttons Press Down When Clicked */
+.button-container button:active {
+  transform: translateY(3px) scale(0.98);
+  box-shadow: 0 1px 0 rgba(78, 70, 120, 0.2);
+}
+
+/* Keyboard Focus */
+button:focus-visible {
+  outline: 3px solid #62539b;
+  outline-offset: 3px;
 }
 
 /* Care Guide Button */
 .guide-button {
-  margin-top: 20px;
-  padding: 12px 20px;
-  background-color: #f0d2bd;
-  color: #5c4033;
-  border: 1px solid #d9a88d;
-  border-radius: 10px;
+  display: block;
+  margin: 25px auto 10px;
+  padding: 14px 22px;
+
+  background-color: #e3dcfa;
+  color: #62539b;
+  border: 2px solid #b8aae7;
+  border-radius: 30px;
+
   font-size: 14px;
+  font-weight: bold;
   cursor: pointer;
+
+  box-shadow: 0 4px 0 #cfc5ed;
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
+/* Care Guide Button Hover */
 .guide-button:hover {
-  background-color: #e8b89d;
+  background-color: #cfc5ed;
+  transform: translateY(-3px);
 }
 
 /* Care Guide */
 #care-guide {
-  background-color: #fff0df;
-  border: 1px solid #e8b89d;
-  border-radius: 12px;
-  padding: 15px;
+  background-color: #ffffff;
+  border: 2px solid #b8aae7;
+  border-radius: 25px;
+  padding: 20px;
   margin-top: 15px;
 }
 
 #care-guide h3 {
-  color: #a65f46;
+  color: #62539b;
+  text-align: center;
 }
 
 #care-guide p {
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 1.7;
+  color: #625982;
+}
+
+/* Mochi's Shaking and Bouncing Animation */
+.pet-image.shake,
+.pet-image-container:hover .pet-image.shake {
+  animation: mochiShake 0.7s ease-in-out;
+  transform-origin: center bottom;
+}
+
+/* Mochi Shakes Side to Side and Bounces */
+@keyframes mochiShake {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  20% {
+    transform: translateY(-15px) rotate(-8deg);
+  }
+
+  40% {
+    transform: translateY(0) rotate(8deg);
+  }
+
+  60% {
+    transform: translateY(-20px) rotate(-6deg);
+  }
+
+  80% {
+    transform: translateY(-5px) rotate(6deg);
+  }
+
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #625982;
+  font-size: 14px;
+  border-top: 2px dashed #b8aae7;
+}
+
+footer a {
+  float: left;
+  margin: 5px;
 }
 
 /* Smaller Screens */
 @media screen and (max-width: 600px) {
   body {
-    margin: 15px;
+    padding: 12px;
   }
 
   main {
     flex-direction: column;
+    padding: 20px 12px;
     gap: 20px;
   }
 
   h1 {
-    font-size: 28px;
+    font-size: 27px;
+  }
+
+  .pet-image {
+    height: 200px;
+  }
+
+  .pet-image-container {
+    padding: 20px;
   }
 
   .dashboard {
-    padding: 20px;
+    padding: 18px;
   }
 
   .button-container button {
     flex: 1 1 120px;
+  }
+}
+
+/* Reduce Animations for Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .pet-image,
+  .button-container button,
+  .guide-button,
+  .pet-image-container {
+    transition: none;
+  }
+
+  .pet-image.shake,
+  .pet-image-container:hover .pet-image.shake,
+  .pet-image-container::before,
+  .pet-image-container::after {
+    animation: none;
   }
 }
